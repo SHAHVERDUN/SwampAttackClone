@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(Vector2.left.normalized * Time.deltaTime * _speedModifier, Space.World);
+        transform.Translate(Vector2.left.normalized * Time.deltaTime * _speedModifier);
     }
 
     private void DestroyObjectDelayed()
@@ -41,8 +41,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out Enemy enemy))
         {
             enemy.TakeDamage(_damageForce);
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }

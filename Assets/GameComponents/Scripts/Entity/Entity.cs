@@ -11,7 +11,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] private HealthBar _healthBar;
     [SerializeField] private float _maxHealthCount;
 
-    private BoxCollider2D _boxCollider2D;
+    protected BoxCollider2D BoxCollider2D;
     private float _currentHealthCount;
 
     public bool IsActive => gameObject.activeSelf;
@@ -34,14 +34,14 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void InitializeOnDisable()
     {
-        _boxCollider2D.enabled = true;
+        BoxCollider2D.enabled = true;
     }
 
     protected virtual void InitializeStart()
     {
         _currentHealthCount = _maxHealthCount;
 
-        _boxCollider2D = GetComponent<BoxCollider2D>();
+        BoxCollider2D = GetComponent<BoxCollider2D>();
 
         HealthChanged?.Invoke(ReturnNormalizedCountOfHealth());
     }

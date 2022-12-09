@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions: []
   _delayBeforeDisappearing: 1.5
+  _healthBar: {fileID: 4267375357601885653}
 --- !u!1 &6681473428806229207
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +384,10 @@ PrefabInstance:
       propertyPath: _entity
       value: 
       objectReference: {fileID: 6681473427220781981}
+    - target: {fileID: 763579183, guid: 5ecb2439fd2fce24ba4fe183c7c8ee59, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 763579183, guid: 5ecb2439fd2fce24ba4fe183c7c8ee59, type: 3}
       propertyPath: _smoothingChangingValue
       value: 0.01

@@ -16,4 +16,10 @@ public class Enemy : Entity
     {
         _attackedTarget = attackedTarget;
     }
+
+    protected override void Die()
+    {
+        base.Die();
+        BoxCollider2D.enabled = false;
+    }
 }

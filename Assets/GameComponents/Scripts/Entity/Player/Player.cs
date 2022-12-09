@@ -7,9 +7,9 @@ using UnityEngine;
 public class Player : Entity
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private List<TextMeshProUGUI> _texts;
     [SerializeField] private Transform _shootPoint;
-    [SerializeField] private List<Weapon> _weapons;
+    [SerializeField] private List<TextMeshProUGUI> _texts;
+    [SerializeField] private Weapon _weapons;
 
     private Weapon _currentWeapon;
     private float _money;
@@ -35,7 +35,7 @@ public class Player : Entity
     {
         base.InitializeStart();
         _animator = GetComponent<Animator>();
-        _currentWeapon = _weapons[0];
+        _currentWeapon = _weapons;
     }
 
     private void CheckMouseButton()
@@ -51,7 +51,7 @@ public class Player : Entity
         if (_animator.GetCurrentAnimatorStateInfo(_animator.GetLayerIndex(BaseLayer)).IsName(ShootingGunAnimationPlayer) == false)
         {
             _animator.Play(ShootingGunAnimationPlayer);
-            _currentWeapon.Shoot(_shootPoint.position);
+            _weapons.Shoot(_shootPoint);
         }
     }
 
@@ -69,7 +69,12 @@ public class Player : Entity
     protected override void Die()
     {
         base.Die();
-
         gameObject.SetActive(false);
+    }
+
+    public void BuyWeapon(Weapon weapon)
+    {
+        _money -= weapon.Price;
+        _weapons = weapon;
     }
 }

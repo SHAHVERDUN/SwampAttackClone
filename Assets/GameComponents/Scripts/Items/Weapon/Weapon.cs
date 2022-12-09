@@ -8,5 +8,15 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private float _price;
     [SerializeField] private bool _isBuyed;
 
-    public abstract void Shoot(Vector2 shootPoint);
+    public Sprite Icon => _icon;
+    public string Label => _label;
+    public float Price => _price;
+    public bool IsBuyed => _isBuyed;
+
+    public abstract void Shoot(Transform shootPoint);
+
+    public void Buy()
+    {
+        _isBuyed = true;
+    }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeathState : State
 {
     [SerializeField] private float _delayBeforeDisappearing;
+    [SerializeField] private HealthBar _healthBar;
 
     private float _timeAfterLastSpawn;
     private Animator _animator;
@@ -45,6 +46,7 @@ public class DeathState : State
 
     private void InitializeOnEnable()
     {
+        _healthBar.gameObject.SetActive(false);
         _animator.Play(DeathAnimationMinotaur);
     }
 
